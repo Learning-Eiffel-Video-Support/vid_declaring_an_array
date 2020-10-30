@@ -42,6 +42,7 @@ feature -- Test routines
 			create l_array.make_filled (3) -- 3 null strings
 			assert_arrays_equal ("three", <<Void,Void,Void>>, l_array.to_array)
 			create l_array.make_from_array (<<"a", "b", "c">>)
+			assert_arrays_equal ("three", <<"a", "b", "c">>, l_array.to_array)
 		end
 
 	arrayed_stack_tests
@@ -61,7 +62,10 @@ feature -- Test routines
 		local
 			l_array: ARRAYN [INTEGER]
 		do
-			create l_array.make_n_based (<<[2,2]>>)
+			create l_array.make_n_based (<<[1, 3], [1, 3]>>) -- 2-dim array
+			l_array.put (100, <<2, 2>>)
+			assert_integers_equal ("2_2", 100, l_array.item (<<2, 2>>))
+
 			create l_array.make_n_based_filled (<<[2,2]>>, 0)
 			create l_array.make_one_based (<<1,2,3,4>>)
 			create l_array.make_one_based_filled (<<1,2,3,4>>, 0)
