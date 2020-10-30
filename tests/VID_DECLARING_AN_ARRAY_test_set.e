@@ -39,8 +39,9 @@ feature -- Test routines
 			l_array: ARRAYED_LIST [STRING]
 		do
 			create l_array.make (0) -- empty array (like make_empty above)
-			create l_array.make_filled (101) -- 101 empty strings
-			create l_array.make_from_array (<<"a", "new", "array">>)
+			create l_array.make_filled (3) -- 3 null strings
+			assert_arrays_equal ("three", <<Void,Void,Void>>, l_array.to_array)
+			create l_array.make_from_array (<<"a", "b", "c">>)
 		end
 
 	arrayed_stack_tests
@@ -48,7 +49,11 @@ feature -- Test routines
 		local
 			l_array: ARRAYED_STACK [INTEGER]
 		do
-			do_nothing -- yet ...
+			create l_array.make (0)
+			l_array.force (1)
+			l_array.force (2)
+			l_array.force (3)
+			assert_integers_equal ("three", 3, l_array.count)
 		end
 
 	arrayn_tests
