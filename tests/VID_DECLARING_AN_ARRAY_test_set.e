@@ -28,6 +28,13 @@ feature -- Test routines
 				basis for the notion of "manifest arrays"—that is—arrays typed
 				in code as << ... >> (double-angle-brackets). The [G] of the array
 				being determined by the contents.
+				
+				Pros
+				- Difficult to grow, which means stable memory allocation after creation.
+				
+				Cons
+				- Not easy to grow. Use ARRAYED_LIST if you will need to dynamically (as-it-is-used)
+					grow your array. Otherwise, use ARRAY for stable item counts. Less is okay.
 				]"
 		local
 			l_array: ARRAY [STRING]
@@ -56,6 +63,17 @@ feature -- Test routines
 
 	arrayed_list_tests
 			-- `arrayed_list_tests'
+		note
+			explanation: "[
+				An ARRAY is not a DYNAMIC_LIST (Sequential, dynamically modifiable lists),
+				but an ARRAYED_LISt [G] is. What changes?
+				
+				Pros
+				- Easily expanded and grown using features like `force'.
+				
+				Cons
+				- Easily expandable means potentially slower due to memory allocations.
+				]"
 		local
 			l_array: ARRAYED_LIST [STRING]
 		do
@@ -80,6 +98,15 @@ feature -- Test routines
 
 	arrayn_tests
 			-- Multidimensional `arrayn_tests'
+		note
+			explanation: "[
+				The ARRAYN [G] class is designed to manage multi-dimensional arrays.
+				This class can be memory intensive as well as a memory allocation hog.
+				This is also not a production-proven class. It was created as an
+				experiment and demonstration of "can-it-be-done" in Eiffel. The answer
+				is yes, but the bugs, memory issues, and other matters have not been
+				properly vetted.
+				]"
 		local
 			l_array: ARRAYN [INTEGER]
 		do
