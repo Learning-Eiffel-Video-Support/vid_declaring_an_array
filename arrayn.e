@@ -127,6 +127,20 @@ feature -- Access
 			end
 		end
 
+	at alias "@" (a_vector: TUPLE): detachable G
+			--
+		local
+			l_vector: ARRAYED_LIST [INTEGER]
+		do
+			create l_vector.make (a_vector.count)
+			across a_vector as ic loop
+				if attached {INTEGER} ic.item as al_item then
+					l_vector.force (al_item)
+				end
+			end
+			Result := item (l_vector.to_array)
+		end
+
 	place (a_object: G; a_vector: ARRAY [INTEGER])
 			-- Place `a_object' at an empty `a_vector' location.
 		require

@@ -62,11 +62,15 @@ feature -- Test routines
 		local
 			l_array: ARRAYN [INTEGER]
 		do
-			create l_array.make_n_based (<<[1, 3], [1, 3]>>) -- 2-dim array
-			l_array.put (100, <<2, 2>>)
-			assert_integers_equal ("2_2", 100, l_array.item (<<2, 2>>))
+			create l_array.make_n_based (<<[1, 3], [1, 3]>>) -- 2-dim array with 3-elements along each dimension
+			l_array.put (100, <<2, 2>>) -- put 100 at 2,2 or (x,y)
+			assert_integers_equal ("2_2", 100, l_array.item (<<2, 2>>)) -- what value is at x,y or 2,2?
+			assert_integers_equal ("2_2_at", 100, l_array @ [2,2]) -- another way to ask the same thing.
 
-			create l_array.make_n_based_filled (<<[2,2]>>, 0)
+			create l_array.make_n_based (<<[1, 4], [1, 100], [1, 10]>>) -- 3D array w/4x100x10 elem's
+			l_array.put (1_999, <<3, 40, 4>>) -- put 1,999 at [3,40,4]
+			assert_integers_equal ("2_40_4_at", 1_999, l_array @ [3, 40, 4]) -- see if we can get it back.
+
 			create l_array.make_one_based (<<1,2,3,4>>)
 			create l_array.make_one_based_filled (<<1,2,3,4>>, 0)
 		end
