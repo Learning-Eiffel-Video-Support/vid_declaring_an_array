@@ -16,9 +16,21 @@ feature -- Test routines
 			l_array: ARRAY [STRING]
 		do
 			create l_array.make_empty
-			create l_array.make_filled ("abc", 1, 100)
+			create l_array.make_filled ("X", 1, 5)
 			create l_array.make_from_array (<<"my", "new", "array">>)
 			create l_array.make_from_special (<<"another", "way">>)
+
+				-- Add items to an empty array
+			create l_array.make_empty
+			l_array.grow (3)
+			l_array.put ("a", 1)
+			l_array.put ("b", 2)
+			l_array.put ("c", 3)
+			assert_arrays_equal ("abc", <<"a", "b", "c">>, l_array)
+
+				-- Test filled array
+			create l_array.make_filled ("X", 1, 5) -- Create an array filled with five "X" items.
+			assert_arrays_equal ("abc", <<"X","X","X","X","X">>, l_array) -- Test that theory.
 		end
 
 	arrayed_list_tests
