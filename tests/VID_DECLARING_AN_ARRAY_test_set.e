@@ -58,7 +58,7 @@ feature -- Test routines
 		end
 
 	arrayn_tests
-			-- `arrayn_tests'
+			-- Multidimensional `arrayn_tests'
 		local
 			l_array: ARRAYN [INTEGER]
 		do
