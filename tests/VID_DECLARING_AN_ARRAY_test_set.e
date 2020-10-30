@@ -12,18 +12,24 @@ feature -- Test routines
 
 	array_tests
 			-- `array_tests'
+		local
+			l_array: ARRAY [INTEGER]
 		do
 			do_nothing -- yet ...
 		end
 
 	arrayed_list_tests
 			-- `'
+		local
+			l_array: ARRAYED_LIST [INTEGER]
 		do
 			do_nothing -- yet ...
 		end
 
 	arrayed_stack_tests
 			-- `'
+		local
+			l_array: ARRAYED_STACK [INTEGER]
 		do
 			do_nothing -- yet ...
 		end
