@@ -1,6 +1,16 @@
-note
+﻿note
 	description: "Tests of {VID_DECLARING_AN_ARRAY}."
 	testing: "type/manual"
+
+							-- Hover and click open!
+	EIS: "name=try", "src=https://www.eiffel.com"
+	EIS: "name=buy", "src=https://account.eiffel.com/licenses/_/buy/"
+			-- Code commercial for less than 41 cents a day!
+
+	EiS: "name=other_demos", "src=https://github.com/Learning-Eiffel-Video-Support"
+
+	EIS: "name=video_demo", "src=https://youtu.be/8zmJBfpOjvc"
+	EIS: "name=learning_eiffel_channel", "src=https://www.youtube.com/playlist?list=PLf9JgTngKbj417KYiyb4iv88GYAlhN7FX"
 
 class
 	VID_DECLARING_AN_ARRAY_TEST_SET
@@ -12,8 +22,16 @@ feature -- Test routines
 
 	array_tests
 			-- `array_tests'
+		note
+			explanation: "[
+				Simple and 1-dimensional arrays. The ARRAY [G] class is the
+				basis for the notion of "manifest arrays"—that is—arrays typed
+				in code as << ... >> (double-angle-brackets). The [G] of the array
+				being determined by the contents.
+				]"
 		local
 			l_array: ARRAY [STRING]
+			l_array_any: ARRAY [ANY]
 		do
 			create l_array.make_empty
 			create l_array.make_filled ("X", 1, 5)
@@ -31,6 +49,9 @@ feature -- Test routines
 				-- Test filled array
 			create l_array.make_filled ("X", 1, 5) -- Create an array filled with five "X" items.
 			assert_arrays_equal ("abc", <<"X","X","X","X","X">>, l_array) -- Test that theory.
+
+			l_array_any := <<1, "abc", 'x'>> -- A simple array filled with object of ANY type.
+												-- Here, we see <<INTEGER, STRING, CHARACTER>>
 		end
 
 	arrayed_list_tests
