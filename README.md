@@ -1,4 +1,6 @@
 # Learning Eiffel - Declaring an Array
+Declaring an Array support code
+
 This is roughly the code (with imrpovements) that was used in the making of the Learning Eiffel video found at: https://youtu.be/8zmJBfpOjvc
 
 The intent of this code is to demonstrate how to make and operate various forms of ARRAYs.
